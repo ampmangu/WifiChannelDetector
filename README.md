@@ -7,6 +7,7 @@ It also give you the summary in english or spanish.
 #How to use it
 
 Windows: Just call it from cmd: python detect.py.
+
 Linux and related: Call it from shell, give it the name of your WiFi interface. Example: python detect.py eth0
 #License
 
