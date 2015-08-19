@@ -21,7 +21,7 @@ if "Windows" in platform.system():
 		print "WARNING: ", errors
 		sys.exit(errors)
 else:
-	netsh=subprocess.Popen("sudo iwlist wlan0 scan", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE))
+	netsh=subprocess.Popen("sudo iwlist "+sys.argv[1]+" scan > list_ssid.txt", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 	output, errors =  netsh.communicate()
 	if errors: 
 		print "WARNING: ", errors
