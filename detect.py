@@ -1,6 +1,6 @@
 #!/bin/env python2.7
 # -*- coding: utf-8 -*-
-# DetectSSID.py
+# detect.py
 # Author:   Adrian Marin Portillo
 # Date:     August 19th 2015
 # Version:  1.1
