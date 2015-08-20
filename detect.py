@@ -1,11 +1,12 @@
 #!/bin/env python2.7
 # -*- coding: utf-8 -*-
-# detect.py
+# DetectSSID.py
 # Author:   Adrian Marin Portillo
 # Date:     August 19th 2015
-# Version:  1.0
+# Version:  1.1
 # Location: https://github.com/mangu93
 # Non Windows part is experimental.
+# Upgraded variables numbers
 import sys
 import os
 import io
@@ -21,7 +22,7 @@ if "Windows" in platform.system():
 		print "WARNING: ", errors
 		sys.exit(errors)
 else:
-	netsh=subprocess.Popen("sudo iwlist "+sys.argv[1]+" scan > list_ssid.txt", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+	netsh=subprocess.Popen("sudo iwlist wlan0 scan", shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
 	output, errors =  netsh.communicate()
 	if errors: 
 		print "WARNING: ", errors
@@ -38,8 +39,8 @@ with io.open(txt_path) as list_ssid:
 	pattern = re.compile(CARRIS_REGEX)
 	for match in pattern.finditer(list_ssid.read()):
 		actual_line=match.group(0)
-		resultado=[int(s) for s in actual_line.split() if s.isdigit()]
-		for a in resultado:
+		result=[int(s) for s in actual_line.split() if s.isdigit()]
+		for a in result:
 			wifi_list[a]=wifi_list[a]+1
 
 
@@ -47,13 +48,13 @@ if "es_ES" in locale.getdefaultlocale():
 	print "RESULTADOS"
 	for a in range(0,13):
 		real_index=str(a+1)
-		numero_veces=str(wifi_list[a])
-		print "Canal "+real_index+" : "+numero_veces+" ocurrencias."
+		num_times=str(wifi_list[a])
+		print "Canal "+real_index+" : "+num_times+" ocurrencias."
 	print "Recuerda al escoger: cada router ocupa una banda mas las 3 a cada lado."
 else:
 	print "RESULTS"
 	for a in range(0,13):
 		real_index=str(a+1)
-		numero_veces=str(wifi_list[a])
-		print "Channel "+real_index+" : "+numero_veces+" times."
+		num_times=str(wifi_list[a])
+		print "Channel "+real_index+" : "+num_times+" times."
 	print "Remember: pick the channel wisely."
