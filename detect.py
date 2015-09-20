@@ -33,7 +33,7 @@ if "Windows" in platform.system():
 	txt_path= file_path+"\\list_ssid.txt"
 else:
 	txt_path= file_path+"/list_ssid.txt"
-wifi_list=[0] * 13
+wifi_list=[0] * 14
 with io.open(txt_path) as list_ssid:
 	CARRIS_REGEX=r'((Channel+)|(Canal+)){1}(\s)*(:){1}(\s){1}[0-9]{1,2}'
 	pattern = re.compile(CARRIS_REGEX)
@@ -51,6 +51,7 @@ if "es_ES" in locale.getdefaultlocale():
 		num_times=str(wifi_list[a])
 		print "Canal "+real_index+" : "+num_times+" ocurrencias."
 	print "Recuerda al escoger: cada router ocupa una banda mas las 3 a cada lado."
+	raw_input("Pulse una tecla para salir...")
 else:
 	print "RESULTS"
 	for a in range(0,13):
@@ -58,3 +59,4 @@ else:
 		num_times=str(wifi_list[a])
 		print "Channel "+real_index+" : "+num_times+" times."
 	print "Remember: pick the channel wisely."
+	raw_input("Input something")
